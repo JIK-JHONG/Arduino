@@ -13,8 +13,8 @@
 #define FLASH_RATE 5
 #define IOT_ID "ESP32-C3"
 //  WIFI帳密
-#define JIK_HOME_AC_SSID "YOUR_SSID"
-#define JIK_HOME_AC_PSWD "YOUR_PSWD"
+#define AC_SSID "YOUR_SSID"
+#define AC_PSWD "YOUR_PSWD"
 //  儲存大小
 #define MAX_LOG_SIZE 1000
 
@@ -74,8 +74,8 @@ MAX6675 ktc(thermocoupleCLK, thermocoupleCS, thermocoupleSO);
 U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, 6, 5, U8X8_PIN_NONE);
 
 // Wi-Fi 資訊
-char const SSID[] = JIK_HOME_AC_SSID;
-char const PSWD[] = JIK_HOME_AC_PSWD;
+char const SSID[] = AC_SSID;
+char const PSWD[] = AC_PSWD;
 
 
 // WebServer 初始化
