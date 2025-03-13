@@ -159,7 +159,7 @@ String formatElapsedTime(unsigned long elapsed, unsigned long days)
     return formattedTime;
 }
 
-void init_data_log()
+void initDataLog()
 {
     for (int i = 0; i < MAX_LOG; i++)
     {
@@ -168,7 +168,7 @@ void init_data_log()
 }
 
 
-void update_data_log(float new_data)
+void updateDataLog(float new_data)
 {
     // 若數據記錄已滿，將最前面的數據刪除
     if (data_log_count >= MAX_LOG)
@@ -232,7 +232,7 @@ void handleRoot()
     // else
     // {
     //     // message += String(tempC);
-    //     // update_data_log(tempC);  // 更新數據日誌
+    //     // updateDataLog(tempC);  // 更新數據日誌
     // }
     
     message += " - ";
@@ -506,7 +506,7 @@ void handleGetTemperature()
     else
     {
         doc["temperature"] = tempC;
-        update_data_log(tempC);
+        updateDataLog(tempC);
     }
 
     String response;
@@ -550,7 +550,7 @@ void handleResetLog()
 {
 
 
-    init_data_log();
+    initDataLog();
     float tmp_res = 0.0 ;
     for (int i=0;i<data_log_count;i++){
       tmp_res += time_log[i].temp ;
@@ -634,7 +634,7 @@ void handleNotFound()
 
 void setup(void)
 {
-    init_data_log();
+    initDataLog();
     init_Millis = millis();
     log_save_timer = millis();
     // OLED 和溫度感測器初始化
@@ -709,7 +709,7 @@ void loop(void)
     float tempC = ktc.readCelsius();
     if (log_timer >= diff_save_timer * 1000)
     {
-        update_data_log(tempC);
+        updateDataLog(tempC);
         log_save_timer = millis(); // 重設 log_save_timer 為當前 millis()
          // 更新時 LED_ID_ERR 閃爍
         digitalWrite(LED_ID_ERR, HIGH);
